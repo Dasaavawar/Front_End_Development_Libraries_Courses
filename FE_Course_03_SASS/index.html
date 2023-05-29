@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <header>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>SASS</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    </header>
+    <body>
+      
+      <!-- <style type='text/scss'>
+        $text-color: red;
+
+        .header{
+          text-align: center;
+        }
+        .blog-post, h2 {
+          color: $text-color;
+        }
+      </style> -->
+      <style>
+        .header{
+          text-align: center;
+        }
+        .blog-post, h2 {
+          color: red;
+        }
+        .blog-post, p {
+          color: black;
+        }
+      </style>
+      
+      <h1 class="header">Learn Sass</h1>
+      <div class="blog-post">
+        <h2>Some random title</h2>
+        <p>This is a paragraph with some random text in it</p>
+      </div>
+      <div class="blog-post">
+        <h2>Header #2</h2>
+        <p>Here is some more random text.</p>
+      </div>
+      <div class="blog-post">
+        <h2>Here is another header</h2>
+        <p>Even more random text within a paragraph</p>
+      </div>
+      
+      <!-- <style type='text/scss'>
+        .blog-post {
+          h1 {
+          text-align: center;
+          color: blue;
+          }
+          p {
+            font-size: 20px;
+          }
+        }
+      </style> -->
+      <style>
+        .blog-post h1 {
+          text-align: center;
+          color: blue;
+        }
+        .blog-post p {
+          text-align: center;
+          font-size: 20px;
+          color: black;  
+        }
+      </style>
+      <div class="blog-post">
+        <h1>Blog Title</h1>
+        <p>This is a paragraph</p>
+      </div>
+
+      <!-- <style type='text/scss'>
+        @mixin border-radius($radius){
+          -webkit-border-radius:$radius;
+          -moz-border-radius:$radius;
+          -ms-border-radius:$radius;
+          border-radius:$radius;
+        }
+
+        #awesome {
+          width: 150px;
+          height: 150px;
+          background-color: green;
+          @include border-radius(15px);
+        }
+      </style> -->
+      <style>
+        #awesome {
+          width: 150px;
+          height: 150px;
+          background-color: green;
+          -webkit-border-radius: 15px;
+          -moz-border-radius: 15px;
+          -ms-border-radius: 15px;
+          border-radius: 15px;
+        }
+      </style>
+      <div id="awesome"></div>
+
+      <!-- <style type='text/scss'>
+        @mixin border-stroke($val) {
+          @if $val == light {
+            border: 1px solid black;
+          }
+          @else if $val == medium {
+            border: 3px solid black;
+          }
+          @else if $val == heavy {
+            border: 6px solid black;
+          }
+          @else {
+            border: none;
+          }
+        }
+
+        #box {
+          width: 150px;
+          height: 150px;
+          background-color: red;
+          @include border-stroke(medium);
+        }
+      </style> -->
+      <style>
+        #box {
+          width: 150px;
+          height: 150px;
+          background-color: red;
+          border: 3px solid black;
+        }
+      </style>
+      <div id="box"></div>
+
+      <!-- <style type='text/scss'>
+        @for $j from 1 through 5 {
+          .text-#{$j} { font-size: 15px * $j; }
+        }
+      </style> -->
+      <style>
+        .text-1 {
+          font-size: 15px;
+        }
+        .text-2 {
+          font-size: 30px;
+        }
+        .text-3 {
+          font-size: 45px;
+        }
+        .text-4 {
+          font-size: 60px;
+        }
+        .text-5 {
+          font-size: 75px;
+        }
+      </style>
+      <p class="text-1">Hello</p>
+      <p class="text-2">Hello</p>
+      <p class="text-3">Hello</p>
+      <p class="text-4">Hello</p>
+      <p class="text-5">Hello</p>
+
+      <!-- <style type='text/scss'>
+        @each $color in blue, black, red {
+            .#{$color}-bg {background-color: $color;}
+          }
+        
+        div {
+          height: 200px;
+          width: 200px;
+        }
+      </style> -->
+      <style>
+        .blue-bg {
+          background-color: blue;
+        }
+        .black-bg {
+          background-color: black;
+        }
+        .red-bg {
+          background-color: red;
+        }
+        div {
+          height: 200px;
+          width: 200px;
+        }
+      </style> 
+      <div class="blue-bg"></div>
+      <div class="black-bg"></div>
+      <div class="red-bg"></div>
+
+      <!-- <style type='text/scss'>
+        $x: 1;
+        @while $x < 11 {
+          .text-#{$x} { 
+            font-size: 15px * $x;
+          }
+          $x: $x + 1;
+        }
+      </style> -->
+      <style>
+        .text-1 {
+          font-size: 15px;
+        }
+        .text-2 {
+          font-size: 30px;
+        }
+        .text-3 {
+          font-size: 45px;
+        }
+        .text-4 {
+          font-size: 60px;
+        }
+        .text-5 {
+          font-size: 75px;
+        }
+      </style>  
+      <p class="text-1">Hello</p>
+      <p class="text-2">Hello</p>
+      <p class="text-3">Hello</p>
+      <p class="text-4">Hello</p>
+      <p class="text-5">Hello</p>
+      
+      <!-- The main.scss file -->
+      <!-- @import 'variables' -->
+
+      <!-- <style type='text/scss'>
+        h3{
+          text-align: center;
+        }
+        .info {
+          width: 200px;
+          border: 1px solid black;
+          margin: 0 auto;
+        }
+        .info-important{
+          @extend .info;
+          background-color: magenta;
+        }
+      </style> -->
+      <style>
+        h3{
+          text-align: center;
+        }
+        .info, .info-important {
+          width: 200px;
+          border: 1px solid black;
+          margin: 0 auto;
+        }
+        .info-important{
+          background-color: magenta;
+        }
+      </style>
+      <h3>Posts</h3>
+      <div class="info-important">
+        <p>This is an important post. It should extend the class ".info" and have its own CSS styles.</p>
+      </div>
+      
+      <div class="info">
+        <p>This is a simple post. It has basic styling and can be extended for other uses.</p>
+      </div>
+    </body>
+</html>
