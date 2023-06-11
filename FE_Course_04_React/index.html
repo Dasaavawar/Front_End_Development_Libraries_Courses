@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types/prop-types.js"></script>
+  </header>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      const JSX_01 = <h1>Hello JSX!</h1>;
+
+      const JSX_02 = (
+        <div>
+          <h1>Heading.</h1>
+          <p>Paragraph</p>
+          <ul>
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Milk</li>
+          </ul>
+        </div>);
+
+      const JSX_03 = (
+        <div className='myDiv'>
+          <h1>Add a class to this div</h1>
+        </div>
+      );
+
+      const JSX_04 = (
+        <div>
+          <h1>This is a block of JSX</h1>
+          <p>Here's a subtitle</p>
+          {/* Here's a comment */}
+        </div>
+      );
+
+      const JSX_05 = (
+        <div>
+          <h1>Hello World</h1>
+          <p>Lets render this to the DOM</p>
+        </div>
+      )
+
+      // Change code below this line
+      // ReactDOM.render(JSX, document.getElementById("challenge-node"));
+
+      const JSX_06 = (
+        <div className='myDiv'>
+          <h1>Add a class to this div</h1>
+        </div>
+      );
+
+      const JSX_07 = (
+        <div>
+          <h2>Welcome to React!</h2> <br />
+          <p>Be sure to close all tags!</p>
+          <hr />
+        </div>
+      );
+
+      class MyComponent_01 extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          // change code below this line
+          return (
+            <div>
+              <h1>Hello React!</h1>
+            </div>
+          );
+          // change code above this line
+        }
+      };
+
+      const ChildComponent = () => {
+        return (
+          <div>
+            <p>I am the child</p>
+          </div>
+        );
+      };
+
+      class ParentComponent extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+        return (
+          <div>
+            <h1>I am the parent</h1>
+            { /* Change code below this line */ }
+            <ChildComponent />
+            { /* Change code above this line */ }
+          </div>
+          );
+        }
+      };
+
+      class Fruits extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          return (
+            <div>
+              <h2>Fruits:</h2>
+              <h3>NonCitrus:</h3>
+              <ul>
+                <li>Apples</li>
+                <li>Blueberries</li>
+                <li>Strawberries</li>
+                <li>Bananas</li>
+              </ul>
+              <h3>Citrus:</h3>
+              <ul>
+                <li>Lemon</li>
+                <li>Lime</li>
+                <li>Orange</li>
+                <li>Grapefruit</li>
+              </ul>
+            </div>
+          );
+        }
+      };
+
+      class Vegetables extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          return (
+            <div>
+              <h2>Vegetables:</h2>
+              <ul>
+                <li>Brussel Sprouts</li>
+                <li>Broccoli</li>
+                <li>Squash</li>
+              </ul>
+            </div>
+          );
+        }
+      };
+
+      class TypesOfFood extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          return (
+            <div>
+              <h1>Types of Food:</h1>
+              <Fruits />
+              <Vegetables />
+            </div>
+          );
+        }
+      };
+
+      // Change code below this line
+      class MyComponent_02 extends React.Component{
+        constructor(props){
+          super(props);
+        }
+        render(){
+          return(
+            <div id="challenge-node">
+              <h1>My First React Component!</h1>
+            </div>
+          );
+        }
+      };
+
+      const CurrentDate = (props) => {
+        return (
+          <div>
+            { /* Change code below this line */ }
+            <p>The current date is: {props.date}</p>
+            { /* Change code above this line */ }
+          </div>
+        );
+      };
+
+      class Calendar extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          return (
+            <div>
+              <h3>What date is it?</h3>
+              { /* Change code below this line */ }
+              <CurrentDate date={Date()} />
+              { /* Change code above this line */ }
+            </div>
+          );
+        }
+      };
+
+      const List = (props) => {
+        { /* Change code below this line */ }
+        return <p>{props.tasks.join(", ")}</p>
+        { /* Change code above this line */ }
+      };
+
+      class ToDo extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          return (
+            <div>
+              <h1>To Do Lists</h1>
+              <h2>Today</h2>
+              { /* Change code below this line */ }
+              <List tasks={["Walk", "Cook", "Bake"]} />
+              <h2>Tomorrow</h2>
+              <List tasks={["Study", "Code", "Eat"]} />
+              { /* Change code above this line */ }
+            </div>
+          );
+        }
+      };
+
+      const Items = (props) => {
+        return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+      };
+
+      // Change code below this line
+      Items.propTypes = {
+        quantity: PropTypes.number.isRequired
+      };
+      // Change code above this line
+
+      Items.defaultProps = {
+        quantity: 0
+      };
+
+      class ShoppingCart extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          return <Items />
+        }
+      };
+
+      class App_01 extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+        return (
+            <div>
+              { /* Change code below this line */ }
+              <Welcome name="Dave"/>
+              { /* Change code above this line */ }
+            </div>
+          );
+        }
+      };
+
+      class Welcome extends React.Component {
+        constructor(props) {
+        super(props);
+      }
+      render() {
+      return (
+          <div>
+            { /* Change code below this line */ }
+            <p>Hello, <strong>{this.props.name}</strong>!</p>
+            { /* Change code above this line */ }
+          </div>
+          );
+        }
+      };
+
+      class CampSite extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+        return (
+            <div>
+              <Camper/>
+            </div>
+          );
+        }
+      };
+      
+      // Change code below this line
+      const Camper = props => <p>{props.name}</p>;
+
+      Camper.defaultProps = {
+        name: "CamperBot"
+      };
+
+      Camper.propTypes = {
+        name: PropTypes.string.isRequired
+      };
+
+      class StatefulComponent extends React.Component {
+        constructor(props) {
+          super(props);
+        // Only change code below this line
+        this.state = {
+          firstName : "Darwin"
+        }
+        // Only change code above this line
+        }
+        render() {
+          return (
+            <div>
+              <h1>{this.state.firstName}</h1>
+            </div>
+          );
+        }
+      };
+
+      class MyComponent_03 extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            visibility: false
+          };
+          // Change code below this line
+          this.toggleVisibility = this.toggleVisibility.bind(this);
+          // Change code above this line
+        }
+        // Change code below this line
+        toggleVisibility() {
+          this.setState(state => {
+            if (state.visibility === true) {
+              return { visibility: false };
+            } else {
+              return { visibility: true };
+            }
+          });
+        }
+        // Change code above this line
+        render() {
+          if (this.state.visibility) {
+            return (
+              <div>
+                <button onClick={this.toggleVisibility}>Click Me</button>
+                <h1>Now you see me!</h1>
+              </div>
+            );
+          } else {
+            return (
+              <div>
+                <button onClick={this.toggleVisibility}>Click Me</button>
+              </div>
+            );
+          }
+        }
+      }
+
+      class Counter extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            count: 0
+          };
+          // Change code below this line
+          this.increment = this.increment.bind(this);
+          this.decrement = this.decrement.bind(this);
+          this.reset = this.reset.bind(this);
+          // Change code above this line
+        }
+        // Change code below this line
+        reset() {
+          this.setState({
+            count: 0
+          });
+        }
+        increment() {
+          this.setState(state => ({
+            count: state.count + 1
+          }));
+        }
+        decrement() {
+          this.setState(state => ({
+            count: state.count - 1
+          }));
+        }
+        // Change code above this line
+        render() {
+          return (
+            <div>
+              <button className='inc' onClick={this.increment}>Increment!</button>
+              <button className='dec' onClick={this.decrement}>Decrement!</button>
+              <button className='reset' onClick={this.reset}>Reset</button>
+              <h1>Current Count: {this.state.count}</h1>
+            </div>
+          );
+        }
+      };
+
+      class ControlledInput extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            input: ''
+          };
+          // Change code below this line
+          this.handleChange = this.handleChange.bind(this);
+          // Change code above this line
+        }
+        // Change code below this line
+        handleChange (event) {
+          this.setState({
+            input: event.target.value
+          })
+        }
+      // Change code above this line
+      render() {
+        return (
+          <div>
+            { /* Change code below this line */}
+            <input value={this.state.input} onChange={this.handleChange} />
+            { /* Change code above this line */}
+            <h4>Controlled Input:</h4>
+            <p>{this.state.input}</p>
+          </div>
+        );
+      }
+    };
+
+      class MyForm extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            input: '',
+            submit: ''
+          };
+          this.handleChange = this.handleChange.bind(this);
+          this.handleSubmit = this.handleSubmit.bind(this);
+        }
+        handleChange(event) {
+          this.setState({
+            input: event.target.value
+          });
+        }
+        handleSubmit(event) {
+          // Change code below this line
+          event.preventDefault()
+            this.setState({
+              submit: this.state.input
+          });
+          // Change code above this line
+        }
+        render() {
+          return (
+            <div>
+              <form onSubmit={this.handleSubmit}>
+              {/* Change code below this line */}
+              <input
+                value={this.state.input}
+                onChange={this.handleChange} />
+              {/* Change code above this line */}
+              <button type='submit'>Submit!</button>
+              </form>
+                {/* Change code below this line */}
+                <h1>{this.state.submit}</h1>
+                {/* Change code above this line */}
+            </div>
+          );
+        }
+      }
+
+      class MyApp extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            inputValue: ''
+          }
+          this.handleChange = this.handleChange.bind(this);
+        }
+        handleChange(event) {
+          this.setState({
+            inputValue: event.target.value
+        });
+        }
+        render() {
+          return (
+            <div>
+              { /* Change code below this line */ }
+              <GetInput
+                input={this.state.inputValue}
+                handleChange={this.handleChange}/>
+              <RenderInput
+                input={this.state.inputValue}/>
+              { /* Change code above this line */ }
+            </div>
+          );
+        }
+      };
+
+      class GetInput extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          return (
+            <div>
+              <h3>Get Input:</h3>
+              <input
+                value={this.props.input}
+                onChange={this.props.handleChange}/>
+            </div>
+          );
+        }
+      };
+      
+      class RenderInput extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          return (
+            <div>
+              <h3>Input Render:</h3>
+              <p>{this.props.input}</p>
+            </div>
+          );
+        }
+      };
+
+      class MyComponent_04 extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            message: ''
+          };
+          this.handleEnter = this.handleEnter.bind(this);
+          this.handleKeyPress = this.handleKeyPress.bind(this);
+        }
+        // Change code below this line
+        componentDidMount() {
+          document.addEventListener("keydown", this.handleKeyPress);
+        }
+        componentWillUnmount() {
+          document.removeEventListener("keydown", this.handleKeyPress);
+        }
+        // Change code above this line
+        handleEnter() {
+          this.setState((state) => ({
+            message: state.message + 'You pressed the enter key! '
+          }));
+        }
+        handleKeyPress(event) {
+          if (event.keyCode === 13) {
+            this.handleEnter();
+          }
+        }
+        render() {
+          return (
+            <div>
+              <h1>{this.state.message}</h1>
+            </div>
+          );
+        }
+      };
+
+      class OnlyEvens extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        shouldComponentUpdate(nextProps, nextState) {
+          console.log('Should I update?');
+          // Change code below this line
+          if (nextProps.value % 2 == 0) {
+            return true;
+          }
+          return false;
+          // Change code above this line
+        }
+        componentDidUpdate() {
+          console.log('Component re-rendered.');
+        }
+        render() {
+          return <h1>{this.props.value}</h1>;
+        }
+      }
+
+      class Controller extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            value: 0
+          };
+          this.addValue = this.addValue.bind(this);
+        }
+        addValue() {
+          this.setState(state => ({
+            value: state.value + 1
+          }));
+        }
+        render() {
+          return (
+            <div>
+              <button onClick={this.addValue}>Add</button>
+              <OnlyEvens value={this.state.value} />
+            </div>
+          );
+        }
+      }
+
+      const styles = {
+        color: 'purple',
+        fontSize: 40,
+        border: "2px solid purple",
+      };
+      // Change code above this line
+      class Colorful extends React.Component {
+        render() {
+          // Change code below this line
+          return (
+            <div style={styles}>Style Me!</div>
+          );
+          // Change code above this line
+        }
+      };
+
+      const inputStyle = {
+        width: 235,
+        margin: 5
+      };
+
+      class MagicEightBall extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            userInput: '',
+            randomIndex: ''
+          };
+          this.ask = this.ask.bind(this);
+          this.handleChange = this.handleChange.bind(this);
+        }
+        ask() {
+          if (this.state.userInput) {
+            this.setState({
+              randomIndex: Math.floor(Math.random() * 20),
+              userInput: ''
+            });
+          }
+        }
+        handleChange(event) {
+          this.setState({
+            userInput: event.target.value
+          });
+        }
+        render() {
+          const possibleAnswers = [
+            'It is certain',
+            'It is decidedly so',
+            'Without a doubt',
+            'Yes, definitely',
+            'You may rely on it',
+            'As I see it, yes',
+            'Outlook good',
+            'Yes',
+            'Signs point to yes',
+            'Reply hazy try again',
+            'Ask again later',
+            'Better not tell you now',
+            'Cannot predict now',
+            'Concentrate and ask again',
+            "Don't count on it",
+            'My reply is no',
+            'My sources say no',
+            'Most likely',
+            'Outlook not so good',
+            'Very doubtful'
+          ];
+          const answer = possibleAnswers[this.state.randomIndex];
+          // Change this line
+          return (
+            <div>
+              <input
+                type='text'
+                value={this.state.userInput}
+                onChange={this.handleChange}
+                style={inputStyle}
+              />
+              <br />
+              <button onClick={this.ask}>Ask the Magic Eight Ball!</button>
+              <br />
+              <h3>Answer:</h3>
+              <p>
+              {/* Change code below this line */}
+              {answer}
+              {/* Change code above this line */}
+              </p>
+            </div>
+          );
+        }
+      }
+
+      class MyComponent_05 extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            display: true
+          }
+          this.toggleDisplay = this.toggleDisplay.bind(this);
+        }
+        toggleDisplay() {
+          this.setState(state => ({
+            display: !state.display
+          }));
+        }
+        render() {
+          // Change code below this line
+          return (
+            <div>
+              <button onClick={this.toggleDisplay}>Toggle Display</button>
+              {this.state.display && <h1>Displayed!</h1>}
+            </div>
+          );
+        }
+      };
+
+      class CheckUserAge extends React.Component {
+        constructor(props) {
+          super(props);
+          // Change code below this line
+          this.state = {
+            userAge: '',
+            input: ''
+          }
+          // Change code above this line
+          this.submit = this.submit.bind(this);
+          this.handleChange = this.handleChange.bind(this);
+        }
+        handleChange(e) {
+          this.setState({
+            input: e.target.value,
+            userAge: ''
+          });
+        }
+        submit() {
+          this.setState(state => ({
+            userAge: state.input
+          }));
+        }
+        render() {
+          const buttonOne = <button onClick={this.submit}>Submit</button>;
+          const buttonTwo = <button>You May Enter</button>;
+          const buttonThree = <button>You Shall Not Pass</button>;
+          return (
+            <div>
+              <h3>Enter Your Age to Continue</h3>
+              <input
+                style={inputStyle}
+                type='number'
+                value={this.state.input}
+                onChange={this.handleChange}
+              />
+              <br />
+              {/* Change code below this line */}
+              {
+                this.state.userAge === ''
+                ? buttonOne
+                : this.state.userAge >= 18
+                ? buttonTwo
+                : buttonThree
+              }
+              {/* Change code above this line */}
+            </div>
+          );
+        }
+      }
+
+      class Results extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          {/* Change code below this line */}
+          return <h1>{this.props.fiftyFifty ? "You Win!" : "You Lose!"}</h1>;
+          {/* Change code above this line */}
+        }
+      }
+
+      class GameOfChance extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            counter: 1
+          };
+          this.handleClick = this.handleClick.bind(this);
+        }
+        handleClick() {
+          this.setState(prevState => {
+            // Complete the return statement:
+            return {
+              counter: this.state.counter + 1
+            }
+          });
+        }
+        render() {
+          const expression = Math.random() >= 0.5; // Change this line
+          return (
+            <div>
+              <button onClick={this.handleClick}>Play Again</button>
+              {/* Change code below this line */}
+              <Results fiftyFifty={expression} />
+              {/* Change code above this line */}
+              <p>{'Turn: ' + this.state.counter}</p>
+            </div>
+          );
+        }
+      }
+
+      class GateKeeper extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            input: ''
+          };
+          this.handleChange = this.handleChange.bind(this);
+        }
+        handleChange(event) {
+          this.setState({ input: event.target.value })
+        }
+        render() {
+          let inputStyle = {
+            border: '1px solid black'
+          };
+          // Change code below this line
+          if (this.state.input.length > 15) {
+            inputStyle.border = '3px solid red';
+          }
+          // Change code above this line
+          return (
+            <div>
+              <h3>Don't Type Too Much:</h3>
+              <input
+              type="text"
+              style={inputStyle}
+              value={this.state.input}
+              onChange={this.handleChange} />
+            </div>
+          );
+        }
+      };
+
+      const textAreaStyles = {
+        width: 235,
+        margin: 5
+      };
+
+      class MyToDoList extends React.Component {
+        constructor(props) {
+          super(props);
+          // Change code below this line
+          this.state = {
+            userInput: '',
+            toDoList: []
+          }
+          // Change code above this line
+          this.handleSubmit = this.handleSubmit.bind(this);
+          this.handleChange = this.handleChange.bind(this);
+        }
+        handleSubmit() {
+          const itemsArray = this.state.userInput.split(',');
+          this.setState({
+            toDoList: itemsArray
+          });
+        }
+        handleChange(e) {
+          this.setState({
+            userInput: e.target.value
+          });
+        }
+        render() {
+          const items = this.state.toDoList.map(i => <li>{i}</li>); // Change this line
+          return (
+            <div>
+              <textarea
+                onChange={this.handleChange}
+                value={this.state.userInput}
+                style={textAreaStyles}
+                placeholder='Separate Items With Commas'
+              />
+              <br />
+              <button onClick={this.handleSubmit}>Create List</button>
+              <h1>My "To Do" List:</h1>
+              <ul>{items}</ul>
+            </div>
+          );
+        }
+      }
+
+      const frontEndFrameworks = [
+        'React',
+        'Angular',
+        'Ember',
+        'Knockout',
+        'Backbone',
+        'Vue'
+      ];
+
+      function Frameworks() {
+        const renderFrameworks = frontEndFrameworks.map((item) =>
+          <li key={item}>{item}</li>
+        ); // Change this line
+        return (
+          <div>
+            <h1>Popular Front End JavaScript Frameworks</h1>
+            <ul>
+              {renderFrameworks}
+            </ul>
+          </div>
+        );
+      };
+
+      class MyComponent_06 extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            users: [
+              {
+                username: 'Jeff',
+                online: true
+              },
+              {
+                username: 'Alan',
+                online: false
+              },
+              {
+                username: 'Mary',
+                online: true
+              },
+              {
+                username: 'Jim',
+                online: false
+              },
+              {
+                username: 'Sara',
+                online: true
+              },
+              {
+                username: 'Laura',
+                online: true
+              }
+            ]
+          };
+        }
+        render() {
+          const usersOnline = this.state.users.filter(user => user.online === true); // Change this line
+          const renderOnline = usersOnline.map(user => <li key={user.username}>{user.username}</li>); // Change this line
+          return (
+            <div>
+              <h1>Current Online Users:</h1>
+              <ul>{renderOnline}</ul>
+            </div>
+          );
+        }
+      };
+
+      class App_02 extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        render() {
+          return <div/>
+        }
+      };
+
+      // Change code below this line
+      // ReactDOMServer.renderToString(<App />);
+      
+      const MainApp = (
+        <div>
+          {JSX_01}
+          {JSX_02}
+          {JSX_03}
+          {JSX_04}
+          {JSX_05}
+          {JSX_06}
+          {JSX_07}
+          <MyComponent_01 />
+          <ParentComponent />
+          <TypesOfFood />
+          <MyComponent_02 />
+          <Calendar />
+          <ToDo />
+          <ShoppingCart />
+          <App_01 />
+          <CampSite />
+          <StatefulComponent />
+          <MyComponent_03 />
+          <Counter />
+          <ControlledInput />
+          <MyForm />
+          <MyApp />
+          <MyComponent_04 />
+          <Controller />
+          <Colorful />
+          <MagicEightBall />
+          <MyComponent_05 />
+          <CheckUserAge />
+          <GameOfChance />
+          <GateKeeper />
+          <MyToDoList />
+          <Frameworks />
+          <MyComponent_06 />
+        </div>
+      );
+
+      ReactDOM.render(MainApp, document.getElementById('root'));
+    </script>
+  </body>
+</html>
