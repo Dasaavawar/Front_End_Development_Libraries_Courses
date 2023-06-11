@@ -1,7 +1,7 @@
-# freeCodeCamp - Front End Development Libraries - Courses - VI - Redux
+# freeCodeCamp - Front End Development Libraries - Courses - VI - React and Redux
 
 
-## 6. Courses - Redux
+## 6. Courses - React and Redux
 
 React and Redux are often mentioned together, and with good reason. The developer who created Redux was a React developer who wanted to make it easier to share data across different components.
 
