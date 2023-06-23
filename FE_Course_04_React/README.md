@@ -1,7 +1,7 @@
 # freeCodeCamp - Front End Development Libraries - Courses - IV - React
 
 
-## 4. Courses - React
+## 4. Courses - Introduction to the React Challenges
 
 React is a popular JavaScript library for building reusable, component-driven user interfaces for web pages or applications.
 

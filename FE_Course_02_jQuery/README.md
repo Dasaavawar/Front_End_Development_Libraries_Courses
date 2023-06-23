@@ -1,7 +1,7 @@
 # freeCodeCamp - Front End Development Libraries - Courses - II - jQuery
 
 
-## 2. Courses - jQuery
+## 2. Courses - Introduction to the jQuery Challenges
 
 jQuery is one of the most widely used JavaScript libraries in the world.
 

@@ -1,7 +1,7 @@
 # freeCodeCamp - Front End Development Libraries - Courses - V - Redux
 
 
-## 5. Courses - Redux
+## 5. Courses - Introduction to the Redux Challenges
 
 As applications grow in size and scope, managing shared data becomes much more difficult. Redux is defined as a "predictable state container for JavaScript apps" that helps ensure your apps work predictably, and are easier to test.
 

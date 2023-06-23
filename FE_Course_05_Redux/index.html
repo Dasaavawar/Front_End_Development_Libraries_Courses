@@ -3,198 +3,303 @@
   <header>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React</title>
+    <title>Redux</title>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/redux@4.1.1/dist/redux.min.js"></script>
+    <script crossorigin src="https://unpkg.com/redux-thunk@2.3.0/dist/redux-thunk.min.js"></script>
   </header>
   <body>
     <div id="root"></div>
     <script type="text/babel">
+
       const JSX = (
         <div>
-          <h2>Welcome to React!</h2> <br />
-          <p>Be sure to close all tags!</p>
-          <hr />
+          <h2>Welcome to Redux!</h2>
         </div>
       )
-      ReactDOM.render(JSX, document.getElementById('root'));
-    </script>
-    <script type="text/babel">
-      class MyComponent extends React.Component {
-        constructor(props) {
-          super(props);
-        }
-        render() {
-          // change code below this line
-          return (
-            <div>
-              <h1>Hello React!</h1>
-            </div>
-          );
-          // change code above this line
-        }
-      };
-      ReactDOM.render(<MyComponent />, document.getElementById('root'));
-    </script>
-    <script type="text/babel">
-      const ChildComponent = () => {
-        return (
-          <div>
-            <p>I am the child</p>
-          </div>
-        );
-      };
 
-      class ParentComponent extends React.Component {
-        constructor(props) {
-          super(props);
-        }
-        render() {
-        return (
-          <div>
-            <h1>I am the parent</h1>
-            { /* Change code below this line */ }
-            <ChildComponent />
-            { /* Change code above this line */ }
-          </div>
-          );
-        }
-      };
-      ReactDOM.render(<ParentComponent />, document.getElementById('root'));
-    </script>
-    <script type="text/babel">
-      class Fruits extends React.Component {
-        constructor(props) {
-          super(props);
-        }
-        render() {
-          return (
-            <div>
-              <h2>Fruits:</h2>
-              <NonCitrus />
-              <Citrus />
-            </div>
-          );
-        }
-      };
+      const reducer = (state = 5) => {
+        return state;
+      }
 
-      class TypesOfFood extends React.Component {
-        constructor(props) {
-          super(props);
-        }
-        render() {
-          return (
-            <div>
-              <h1>Types of Food:</h1>
-              <Fruits />
-              <Vegetables />
-            </div>
-          );
-        }
-      };
-      ReactDOM.render(<TypesOfFood />, document.getElementById('root'));
-    </script>
-    <script type="text/babel">
+      // Redux methods are available from a Redux object
+      // For example: Redux.createStore()
+      // Define the store here:
+      const store_01 = Redux.createStore(reducer)
+
       // Change code below this line
-      class MyComponent extends React.Component{
-        constructor(props){
-          super(props);
-        }
-        render(){
-          return(
-            <div id="challenge-node">
-              <h1>My First React Component!</h1>
-            </div>
-          );
-        }
-      };
-      ReactDOM.render(<MyComponent />, document.getElementById('root'));
-    </script>
-    <script type="text/babel">
-      const CurrentDate = (props) => {
-        return (
-          <div>
-            { /* Change code below this line */ }
-            <p>The current date is: {props.date}</p>
-            { /* Change code above this line */ }
-          </div>
-        );
-      };
+      var currentState = store_01.getState()
 
-      class Calendar extends React.Component {
-        constructor(props) {
-          super(props);
-        }
-        render() {
-          return (
-            <div>
-              <h3>What date is it?</h3>
-              { /* Change code below this line */ }
-              <CurrentDate date={Date()} />
-              { /* Change code above this line */ }
-            </div>
-          );
-        }
-      };
-      ReactDOM.render(<Calendar />, document.getElementById('root'));
-    </script>
-    <script type="text/babel">
-      const List = (props) => {
-        { /* Change code below this line */ }
-        return <p>{props.tasks.join(", ")}</p>
-        { /* Change code above this line */ }
-      };
+      // Define an action here:
+      let action={
+        type: 'LOGIN'
+      }
 
-      class ToDo extends React.Component {
-        constructor(props) {
-          super(props);
+      // Define an action creator here:
+      function actionCreator() {
+        return action;
+      }
+
+      const LOGIN = 'LOGIN';
+      const LOGOUT = 'LOGOUT';
+
+      const defaultState = {
+        authenticated: false
+      }
+
+      const authReducer = (state = defaultState, action) => {
+        // Change code below this line
+        switch (action.type) {
+          
+          case LOGIN:
+            return {
+              authenticated: true
+            }
+
+          case LOGOUT:
+            return {
+              authenticated: false
+            }
+
+          default:
+            return state;
         }
-        render() {
-          return (
-            <div>
-              <h1>To Do Lists</h1>
-              <h2>Today</h2>
-              { /* Change code below this line */ }
-              <List tasks={["Walk", "Cook", "Bake"]} />
-              <h2>Tomorrow</h2>
-              <List tasks={["Study", "Code", "Eat"]} />
-              { /* Change code above this line */ }
-            </div>
-          );
+        // Change code above this line
+      }
+
+      const store_02 = Redux.createStore(authReducer);
+
+      // Define an action creator here:
+      const loginUser = () => {
+        return {
+          type: LOGIN
         }
-      };
-      ReactDOM.render(<ToDo />, document.getElementById('root'));
-    </script>
-    <script type="text/babel">
-      const ShoppingCart = (props) => {
-        return (
-          <div>
-            <h1>Shopping Cart Component</h1>
-          </div>
-        )
-      };
+      }
+
+      const logoutUser = () => {
+        return {
+          type: LOGOUT
+        }
+      }
+
+      // Dispatch the action here:
+      store_02.dispatch(loginUser());
+      store_02.dispatch({ type: 'LOGIN' });
+
+      const ADD = 'ADD';
+
+      const addReducer = (state = 0, action) => {
+        switch(action.type) {
+          case ADD:
+            return state + 1;
+          default:
+            return state;
+        }
+      }
+
+      const store_03 = Redux.createStore(addReducer);
+
+      // Global count variable:
+      let count = 0;
+
       // Change code below this line
-      ShoppingCart.defaultProps = {
-        items: 0
-      };
-    </script>
-    <script type="text/babel">
-      // Use PropTypes to Define the Props You Expect
-    </script>
-    <script type="text/babel">
+      const add = () => count++;
+      store_03.subscribe(add);
+      // Change code above this line
+
+      store_03.dispatch({type: ADD});
+      console.log(count);
+      store_03.dispatch({type: ADD});
+      console.log(count);
+      store_03.dispatch({type: ADD});
+      console.log(count);
+
+      const INCREMENT = 'INCREMENT';
+      const DECREMENT = 'DECREMENT';
+
+      const counterReducer = (state = 0, action) => {
+        switch(action.type) {
+          case INCREMENT:
+            return state + 1;
+          case DECREMENT:
+            return state - 1;
+          default:
+            return state;
+        }
+      }
+
+      const rootReducer = Redux.combineReducers({
+        count: counterReducer,
+        auth: authReducer
+      })
+
+      const store_04 = Redux.createStore(rootReducer);
+
+      const ADD_NOTE = 'ADD_NOTE';
+
+      const notesReducer = (state = 'Initial State', action) => {
+        switch(action.type) {
+          // Change code below this line
+          case ADD_NOTE:
+            return action.text;
+          // Change code above this line
+          default:
+            return state;
+        }
+      }
+
+      const addNoteText = (note) => {
+        // Change code below this line
+        return {
+          type: ADD_NOTE,
+          text: note
+        }
+        // Change code above this line
+      }
+
+      const store_05 = Redux.createStore(notesReducer);
+
+      console.log(store_05.getState());
+      store_05.dispatch(addNoteText('Hello!'));
+      console.log(store_05.getState());
+
+      const REQUESTING_DATA = 'REQUESTING_DATA'
+      const RECEIVED_DATA = 'RECEIVED_DATA'
+
+      const requestingData = () => { return {type: REQUESTING_DATA} }
+      const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users} }
+
+      const handleAsync = () => {
+        return function(dispatch) {
+          // Dispatch request action here
+          dispatch(requestingData());
+
+          setTimeout(function() {
+            let data = {
+              users: ['Jeff', 'William', 'Alice']
+            }
       
-    </script>
-    <script type="text/babel">
+            // Dispatch received data action here
+            dispatch(receivedData(data));
+          }, 2500);
+        }
+      }
+
+      const initialState = {
+        fetching: false,
+        users: []
+      }
+
+      const asyncDataReducer = (state = initialState, action) => {
+        switch(action.type) {
+          case REQUESTING_DATA:
+            return {
+              fetching: true,
+              users: []
+            }
+          case RECEIVED_DATA:
+            return {
+              fetching: false,
+              users: action.users
+            }
+          default:
+            return state;
+        }
+      }
+
+      const store_06 = Redux.createStore(
+        asyncDataReducer,
+        Redux.applyMiddleware(ReduxThunk.default)
+      )
       
-    </script>
-    <script type="text/babel">
-      
-    </script>
-    <script type="text/babel">
+      // Define a constant for increment action types
+      // Define a constant for decrement action types
+      // Define the counter reducer which will increment or decrement the state based on the action it receives
+
+      const incAction = () => {
+        return {
+          type: INCREMENT
+        };
+      } // Define an action creator for incrementing
+
+      const decAction = () => {
+        return {
+          type: DECREMENT
+        };
+      } // Define an action creator for decrementing
+
+      const store_07 = Redux.createStore(counterReducer); // Define the Redux store here, passing in your reducers
+
+      const ADD_TO_DO = 'ADD_TO_DO';
+
+      // A list of strings representing tasks to do:
+      const todos = [
+        'Go to the store',
+        'Clean the house',
+        'Cook dinner',
+        'Learn to code',
+      ]
+
+      const immutableReducer = (state = todos, action) => {
+        switch(action.type) {
+          case ADD_TO_DO:
+            // Don't mutate state here or the tests will fail
+            // return [...todos, action.todo]
+            return [...state, action.todo];
+          case 'REMOVE_ITEM':
+            // Don't mutate state here or the tests will fail
+            return state.filter((_, index) => index !== action.index);
+          default:
+            return state;
+        }
+      }
+
+      const addToDo = (todo) => {
+        return {
+          type: ADD_TO_DO,
+          todo
+        }
+      }
+
+      const removeItem = (index) => {
+        return {
+          type: 'REMOVE_ITEM',
+          index
+        }
+      }
+
+      const store_08 = Redux.createStore(immutableReducer);
+
+      const defaultUserState = {
+        user: 'CamperBot',
+        status: 'offline',
+        friends: '732,982',
+        community: 'freeCodeCamp'
+      }
+
+      const immutableOnlineReducer = (state = defaultState, action) => {
+        switch(action.type) {
+          case 'ONLINE':
+            // Don't mutate state here or the tests will fail
+            return Object.assign({}, state, { status: "online" });
+          default:
+            return state;
+        }
+      }
+
+      const wakeUp = () => {
+        return {
+          type: 'ONLINE'
+        }
+      }
+
+      const store_09 = Redux.createStore(immutableReducer);
+
       const MainApp = (
         <div>
-          <App />
+          {JSX}
         </div>
       );
 
@@ -202,4 +307,3 @@
     </script>
   </body>
 </html>
-
